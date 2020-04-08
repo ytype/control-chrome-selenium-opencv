@@ -3,8 +3,7 @@ import numpy as np
 import pyperclip
 import pyautogui
 from selenium import webdriver
-from matplotlib import pyplot as plt
-
+#from matplotlib import pyplot as plt
 
 class selcv():
     def __init__(self, chromedriver_path):
@@ -36,8 +35,9 @@ class selcv():
         h = element_img.shape[::-1][2]
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
         top_left = max_loc
-        #bottom_right = (top_left[0] + w, top_left[1] + h)
         return top_left
+        # for debug
+        #bottom_right = (top_left[0] + w, top_left[1] + h)
         #cv2.rectangle(screen,top_left, bottom_right, 255, 2)
         #plt.imshow(screen,cmap = 'gray')
         #plt.show()
@@ -46,7 +46,6 @@ class selcv():
         # temp = <selcv.selcv object at 0x0000020B4A9787F0>
         px = position[0]+20
         py = position[1]+20
-        #pyautogui.moveTo(element_position)
         pyperclip.copy(text)
         pyautogui.click(x=px, y=py)
         pyautogui.hotkey('ctrl', 'v')
